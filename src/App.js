@@ -55,15 +55,16 @@ function App() {
 
                 else {
                     // Only get movie elements in data
-                    const obj = {};
+                    // Filter out game and TV series elements
                     response.Search.forEach(e => {
-                        console.log(e);
-                        if(!(obj[e["Type"] ]==="movie")){
-                            response.Search.pop(e);
+                        if((e["Type"]==="game") || (e["Type"] ==="series")){
+                            const index = response.Search.indexOf(e);
+                            response.Search.splice(index, 1);
                         }
                     });
 
                     setData(response.Search);
+                    console.log(data);
                 }
                 isLoading(false);
             })
