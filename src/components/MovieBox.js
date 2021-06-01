@@ -5,7 +5,7 @@
 import {Card, Col, } from "antd";
 import React from "react";
 const API_KEY = process.env.REACT_APP_API_KEY;
-const Box = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
+const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
 
     const detail = () => {
         // Handles API request if user clicks on a movie box
@@ -43,4 +43,4 @@ const Box = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
         </Col>
     )
 }
-export default Box;
+export default MovieBox;

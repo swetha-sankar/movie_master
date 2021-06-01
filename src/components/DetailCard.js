@@ -7,7 +7,7 @@
 import {Col, Row, Tag} from "antd";
 import React from "react";
 
-const MovieCard = ({Title, Poster, Language, imdbRating, Runtime, Genre, Plot, Released, Director}) => {
+const DetailCard = ({Title, Poster, Language, imdbRating, Runtime, Genre, Plot, Released, Director}) => {
     var coloring = 'magenta';
     if({imdbRating} >= 5.0){
         coloring = 'green';
@@ -52,4 +52,4 @@ const MovieCard = ({Title, Poster, Language, imdbRating, Runtime, Genre, Plot, R
         </Row>
     )
 }
-export default MovieCard;
+export default DetailCard;

@@ -9,5 +9,9 @@
 Bulma, Ant Design, CSS, PyCharm IDE, ReactJS, HTML, GitHub Pages, OMDB API, GitHub, Git
 
 ## Acknowledgements
-Bootstrapped with Create React App
+- Bootstrapped with Create React App
+- https://github.com/ant-design/ant-design
+- https://bulma.io/
+- https://www.omdbapi.com/
+
 

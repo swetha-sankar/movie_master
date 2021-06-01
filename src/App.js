@@ -11,16 +11,16 @@ import {
     Layout,
     Alert,
     Row,
-    Col,
     Modal,
+    Button,
     Pagination
 } from 'antd';
 
 //import { Card, CardActions, CardContent, makeStyles, Button, Typography } from '@material-ui/core';
-import Box from "./components/Box"
+import MovieBox from "./components/MovieBox"
 import SearchBox from "./components/SearchBox"
-import MovieCard from "./components/MovieCard"
-import Load from "./components/Load"
+import DetailCard from "./components/DetailCard"
+import LoadingIcon from "./components/LoadingIcon"
 
 // API key stored in .env file
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -32,8 +32,8 @@ function App() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [query, setQuery] = useState('enter');
-    const [activateModal, setActivateModal] = useState(false);
+    const [query, setQuery] = useState('harry potter');
+    const [visibleModal, activateModal] = useState(false);
     const [detail, setShowDetail] = useState(false);
     const [detailRequest, setDetailRequest] = useState(false);
 
@@ -64,19 +64,9 @@ function App() {
 
     }, [query]);
 
-    const handleChange = value => {
-        if (value <= 1) {
-          this.setState({
-            minValue: 0,
-            maxValue: 9
-          });
-        } else {
-          this.setState({
-            minValue: this.state.maxValue,
-            maxValue: value * 9
-          });
-        }
-    };
+    function onShowSizeChange(current, pageSize) {
+        console.log(current, pageSize);
+    }
     return (
         <div className="App">
             <Layout className="layout">
@@ -99,19 +89,20 @@ function App() {
                         <section className="content has-text-centered">
 
                         <Pagination
+                            // https://github.com/ant-design/ant-design/tree/master/components/pagination/demo
                             defaultCurrent={1}
-                            defaultPageSize={4} //default size of page
+                            defaultPageSize={10} //default size of page
                             showSizeChanger = {true}
-                            showTitle={true}
-                            //onChange={this.handleChange}
-                            total={3} //total number of card data available
+                            onShowSizeChange = {onShowSizeChange}
+                            showTotal = {total => `Total ${total} items`}
+                            total={data-1} //total number of card data available
                         />
                         </section>
 
                     {/* Layout for movie results */}
                         <Row gutter={50} type="flex" justify="center">
                             { loading === true &&
-                                <Load />
+                                <LoadingIcon />
                             }
 
                             { error !== null &&
@@ -122,26 +113,29 @@ function App() {
 
                             { data !== null && data.length > 0 && data.map((result, index) => (
 
-                                <Box
+                                <MovieBox
                                     ShowDetail={setShowDetail}
                                     DetailRequest={setDetailRequest}
-                                    ActivateModal={setActivateModal}
+                                    ActivateModal={activateModal}
                                     key={index}
                                     {...result}
                                 />
                             ))}
                         </Row>
                     <Modal
-                        title='Detail'
                         centered
-                        visible={activateModal}
-                        onCancel={() => setActivateModal(false)}
-                        footer={null}
+                        footer = {[
+                            <Button key = "back" onClick = {() => activateModal(false)}>
+                                Return
+                            </Button>
+                        ]}
+                        visible={visibleModal}
+                        onCancel={() => activateModal(false)}
                         width={800}
                         >
                         { detailRequest === false ?
-                            (<MovieCard {...detail} />) :
-                            (<Load />)
+                            (<DetailCard {...detail} />) :
+                            (<LoadingIcon />)
                         }
                     </Modal>
                 </Content>
