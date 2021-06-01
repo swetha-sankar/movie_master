@@ -9,9 +9,9 @@ import React from "react";
 
 const DetailCard = ({Title, Poster, Language, imdbRating, Runtime, Genre, Plot, Released, Director}) => {
 
-    // Set colors of tags within the card according to the imdbRating value
+    // Set colors of tags within the card according to the imdbRating value (red = bad, green = good, yellow = eh)
     var coloring = 'error';
-    var tagColor = 'default'
+    var tagColor = 'default';
     if(parseInt(imdbRating) >= 7.0){
         coloring = 'success';
     }
