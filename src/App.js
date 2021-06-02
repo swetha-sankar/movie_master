@@ -1,7 +1,7 @@
 /**
  * Swetha Sankar
  * Movie Searcher
- * Main page for configuring layout of website. Calls other components
+ * Main page for configuring layout of website
  */
 // React hooks
 import React, {useEffect, useState} from 'react';
@@ -16,7 +16,6 @@ import {
     Pagination
 } from 'antd';
 
-//import { Card, CardActions, CardContent, makeStyles, Button, Typography } from '@material-ui/core';
 import MovieBox from "./components/MovieBox"
 import SearchBox from "./components/SearchBox"
 import DetailCard from "./components/DetailCard"
@@ -26,11 +25,11 @@ import LoadingIcon from "./components/LoadingIcon"
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 function App() {
-
+    // React hooks
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, isLoading] = useState(false);
-    const [query, setQuery] = useState('life');
+    const [query, setQuery] = useState('good');
     const [visibleModal, activateModal] = useState(false);
     const [detail, setShowDetail] = useState(false);
     const [total, setTotal] = useState(0);
@@ -71,20 +70,19 @@ function App() {
 
 
     const pageSwitcher = (newPage) => {
-       // Switches the page and makes a new request to the API w/ the page number
-        <Pagination current = {newPage} />
+        // Switches the page and makes a new request to the API w/ the page number
+        <Pagination current= {newPage} />
+        // This fetch request uses the new page the user clicks on to query the API
         fetch(`https://www.omdbapi.com/?s=${query}&page=${newPage}&type="movie"&apikey=${API_KEY}`)
             .then(resp => resp)
             .then(resp => resp.json())
             .then(response => {
                 if (response.Response === 'False') {
                     if (!(response.Error === "Incorrect IMDb ID.")) {
-                        // Unnecessary error message
                         setError(response.Error);
                         isLoading(false);
                     }
                 } else {
-                    console.log(response.Search);
                     setData(response.Search);
                 }
                 isLoading(false);
@@ -96,11 +94,29 @@ function App() {
 
     };
 
+    const showTotal = (total, range) => {
+        // Shows number of results on page out of total # of results
+        if(range[0] < 0){
+            range[0] = 0;
+        }
+        if(total !== 0 && range[1] === 0){
+            if(total < 10){
+                range[0] = 1;
+                range[1] = total;
+            }
+            else{
+                range[0] = 1;
+                range[1] = 10;
+            }
+        }
+        return `${range[0]}-${range[1]} of ${total}`
+    };
+
 
     return (
         <div className="App">
             <Layout className="layout">
-                <div className="title is-1 has-text-black-bis is-spaced has-background-link-light">
+                <div className="title is-1 has-text-black-bis is-spaced is-focused">
                     <div className="content has-text-centered">
                         <p>
                             Movie Searcher
@@ -110,7 +126,7 @@ function App() {
                 <div className="subtitle is-5 has-text-black-bis">
                     <div className="content has-text-centered">
                         <p>
-                            Find a movie you like, and click on the poster for more details!
+                            Search for a title, and click on the movie posters below for more details!
                         </p>
                     </div>
                 </div>
@@ -121,11 +137,12 @@ function App() {
                 <section className="content has-text-centered">
                     <Pagination
                         // https://github.com/ant-design/ant-design/tree/master/components/pagination/demo
-                        defaultCurrent = {1}
+                        defaultCurrent={1}
                         onChange={pageSwitcher}
                         showSizeChanger={false}
-                        total={total} //total number of card data available
-                        showTotal={totalResults => `${totalResults} items total`}
+                        showQuickJumper
+                        total={total}
+                        showTotal={showTotal}
                     />
                 </section>
 
