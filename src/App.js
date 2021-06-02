@@ -30,9 +30,10 @@ function App() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, isLoading] = useState(false);
-    const [query, setQuery] = useState('the breakfast club');
+    const [query, setQuery] = useState('hello');
     const [visibleModal, activateModal] = useState(false);
     const [detail, setShowDetail] = useState(false);
+    const [total, setTotal] = useState(0);
     const [detailRequest, setDetailRequest] = useState(false);
 
 
@@ -41,6 +42,7 @@ function App() {
         isLoading(true);
         setError(null);
         setData(null);
+        setTotal(null);
 
         fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`)
 
@@ -48,7 +50,11 @@ function App() {
             .then(resp => resp.json())
             .then(response => {
                 if (response.Response === 'False') {
-                    setError(response.Error);
+                    if (!(response.Error === "Incorrect IMDb ID.")) {
+                        // Unnecessary error message
+                        setError(response.Error);
+                        isLoading(false);
+                    }
                 } else {
                     // Only get movie elements in data
                     // Filter out game and TV series elements
@@ -58,6 +64,7 @@ function App() {
                             response.Search.splice(index, 1);
                         }
                     });
+                    setTotal(response.totalResults);
                     setData(response.Search);
                 }
                 isLoading(false);
@@ -75,10 +82,11 @@ function App() {
         }
         return current;
     }
+    function changePage(current, nextPage){
 
-    if (data != null) {
-        var totalAmount = data.length;
+
     }
+
 
     return (
         <div className="App">
@@ -110,8 +118,10 @@ function App() {
                         defaultPageSize={10} //default size of page
                         showSizeChanger={true}
                         onShowSizeChange={onShowSizeChange}
-                        showTotal={total => `Total ${total} items`}
-                        total={totalAmount} //total number of card data available
+                        onChange={changePage}
+                        total={total} //total number of card data available
+                        showTotal={totalResults => `${totalResults} items total`}
+
                     />
                 </section>
                 <Row gutter={25} type="flex" justify="center">
@@ -123,7 +133,9 @@ function App() {
                     {loading === true &&
                     <LoadingIcon/>
                     }
-                    {/* Layout for movie results */}
+                    {/* Layout for movie results
+                    https://medium.com/wesionary-team/how-to-implement-ant-design-with-react-7d21b6e261cc
+                    */}
                     {data !== null && data.length > 0 && data.map((result, index) => (
                         <MovieBox
                             key={index}
@@ -144,9 +156,9 @@ function App() {
                             Return
                         </Button>
                     ]}
-                    visible={visibleModal}
                     onCancel={() => activateModal(false)}
-                    width={800}
+                    width={600}
+                    visible={visibleModal}
                 >
                     {detailRequest === false ?
                         (<DetailCard {...detail} />) :

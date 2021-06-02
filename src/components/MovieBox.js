@@ -34,29 +34,25 @@ const MovieBox = ({Title, Rating, Release, Poster, ShowDetail, DetailRequest, Ac
         textAlign: 'center',
         textOverflow: 'ellipsis',
     };
+    const poster = <img
+        // If the poster doesn't exist, use the placeholder image
+        src={Poster === 'N/A' ? 'http://www.jackflodesign.com/wp-content/plugins/woocommerce/assets/images/placeholder.png' : Poster}
+        alt={Title}
+        width={250}
+        height={250}
+    />
     return (
         <Col style={{margin: '5px 0'}} className="gutter-row" span={5}>
             <div className="site-card-wrapper" style={{margin: '5px'}}>
                 <Card
                     style={gridStyle}
                     bordered={false}
-                    cover={
-                        <img
-                            // If the poster doesn't exist, use the placeholder image
-                            src={Poster === 'N/A' ? 'http://www.jackflodesign.com/wp-content/plugins/woocommerce/assets/images/placeholder.png' : Poster}
-                            alt={Title}
-                            width='50'
-                            height='50'
-                        />
-                    }
-
-
+                    cover={poster}
                     onClick={() => detailHandler()}
                 >
                     <Meta
-                        avatar={<Avatar src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F450782243943077295%2F&psig=AOvVaw31kDdseB2y5zDgVTS2FAit&ust=1622671618864000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjE7_249_ACFQAAAAAdAAAAABAI"/>}
-                        title={Title}
-                    />
+                        avatar={<Avatar src="" size={5}/>}
+                        title={Title}/>
                 </Card>
             </div>
         </Col>
