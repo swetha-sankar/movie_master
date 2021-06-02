@@ -34,13 +34,15 @@ const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => 
         textAlign: 'center',
         textOverflow: 'ellipsis',
     };
+
     const poster = <img
         // If the poster doesn't exist, use the placeholder image
         src={Poster === 'N/A' ? 'http://www.jackflodesign.com/wp-content/plugins/woocommerce/assets/images/placeholder.png' : Poster}
         alt={Title}
         width={250}
         height={250}
-    />
+    />;
+
     return (
         <Col style={{margin: '5px 0'}} className="gutter-row" span={5}>
             <div className="site-card-wrapper" style={{margin: '5px'}}>
@@ -51,8 +53,9 @@ const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => 
                     onClick={() => detailHandler()}
                 >
                     <Meta
-                        avatar={<Avatar src="" size={5}/>}
-                        title={Title}/>
+                        avatar={<Avatar size={9}/>}
+                        title={Title}
+                    />
                 </Card>
             </div>
         </Col>

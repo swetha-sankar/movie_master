@@ -97,8 +97,6 @@ function App() {
     };
 
 
-
-
     return (
         <div className="App">
             <Layout className="layout">
@@ -117,7 +115,7 @@ function App() {
                     </div>
                 </div>
 
-                {/*Search box and pagination elements*/}
+                {/*Search box and pagination element*/}
                 <SearchBox searchHandler={setQuery}/>
                 <br/>
                 <section className="content has-text-centered">
@@ -130,6 +128,7 @@ function App() {
                         showTotal={totalResults => `${totalResults} items total`}
                     />
                 </section>
+
                 <Row gutter={25} type="flex" justify="center">
                     {error !== null &&
                     <div style={{margin: '20px 0'}}>

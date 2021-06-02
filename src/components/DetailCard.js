@@ -11,16 +11,17 @@ const DetailCard = ({Title, Poster, Language, imdbRating, Runtime, Genre, Plot, 
 
     // Set colors of tags within the card according to the imdbRating value (red = bad, green = good, yellow = eh)
     var coloring = 'error';
-    var tagColor = 'default';
+    var tagColor = '#f50';
     if (parseInt(imdbRating) >= 7.0) {
         coloring = 'success';
+        tagColor = '#87d068'
     } else if (parseInt(imdbRating) >= 5.0) {
         coloring = 'warning'
+        tagColor = 'gold-inverse'
     }
 
     return (
         <Row>
-
             <Col span={13}>
                 <Row>
                     <Col span={25}>
