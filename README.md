@@ -14,7 +14,7 @@ Bulma, Ant Design, CSS, PyCharm IDE, ReactJS, HTML, GitHub Pages, OMDB API, GitH
 - https://bulma.io/
 - https://www.omdbapi.com/
 
-## Image
+*Captures* 
 ![Demo](/public/demo.PNG)
-
+![Detail Box](/public/demo2.PNG)
 
