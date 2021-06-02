@@ -35,6 +35,7 @@ function App() {
     const [detail, setShowDetail] = useState(false);
     const [total, setTotal] = useState(0);
     const [detailRequest, setDetailRequest] = useState(false);
+    const [page, setPage] = useState(1);
 
 
     useEffect(() => {
@@ -44,7 +45,7 @@ function App() {
         setData(null);
         setTotal(null);
 
-        fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`)
+        fetch(`http://www.omdbapi.com/?s=${query}&page=${page}&type="movie"&apikey=${API_KEY}`)
 
             .then(resp => resp)
             .then(resp => resp.json())
@@ -56,14 +57,6 @@ function App() {
                         isLoading(false);
                     }
                 } else {
-                    // Only get movie elements in data
-                    // Filter out game and TV series elements
-                    response.Search.forEach(e => {
-                        if ((e["Type"] === "game") || (e["Type"] === "series")) {
-                            const index = response.Search.indexOf(e);
-                            response.Search.splice(index, 1);
-                        }
-                    });
                     setTotal(response.totalResults);
                     setData(response.Search);
                 }
@@ -81,10 +74,6 @@ function App() {
             current = 1;
         }
         return current;
-    }
-    function changePage(current, nextPage){
-
-
     }
 
 
@@ -118,7 +107,8 @@ function App() {
                         defaultPageSize={10} //default size of page
                         showSizeChanger={true}
                         onShowSizeChange={onShowSizeChange}
-                        onChange={changePage}
+                        current = {page}
+                        onChange={setPage}
                         total={total} //total number of card data available
                         showTotal={totalResults => `${totalResults} items total`}
 
