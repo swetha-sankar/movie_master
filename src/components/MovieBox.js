@@ -7,7 +7,7 @@ import React from "react";
 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const MovieBox = ({Title, Rating, Release, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
+const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
     // https://github.com/ant-design/ant-design/blob/master/components/card/demo/meta.md
     const {Meta} = Card;
 

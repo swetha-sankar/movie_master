@@ -4,6 +4,7 @@
     <list default="true" id="82eddfed-7a22-4a98-b171-18e04cae8bd3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MovieBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieBox.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622421302552</updated>
       <workItem from="1622421303941" duration="21804000" />
-      <workItem from="1622504049770" duration="36790000" />
+      <workItem from="1622504049770" duration="39784000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add basic layout and begin functionality w/ react hooks &amp; bulma">
       <created>1622434164660</created>
@@ -118,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622593551384</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: simplified the code for request to OMDB and saving progress on pagination">
+      <created>1622594879731</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1622594879731</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +140,8 @@
     <MESSAGE value="feat: fix filtering problem lol" />
     <MESSAGE value="style: update bulma layout on main page" />
     <MESSAGE value="current version of pagination for reference" />
-    <option name="LAST_COMMIT_MESSAGE" value="current version of pagination for reference" />
+    <MESSAGE value="feat: simplified the code for request to OMDB and saving progress on pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: simplified the code for request to OMDB and saving progress on pagination" />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="74" key="#ESLint" timestamp="1622484013709">
@@ -143,34 +152,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622484450151" />
-    <state x="406" y="11" key="CommitChangelistDialog2" timestamp="1622593550963">
+    <state x="406" y="11" key="CommitChangelistDialog2" timestamp="1622594879305">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="406" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1622593550963" />
-    <state width="724" height="230" key="GridCell.Tab.0.bottom" timestamp="1622580874230">
+    <state x="406" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1622594879305" />
+    <state width="1493" height="88" key="GridCell.Tab.0.bottom" timestamp="1622596982663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="230" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622580874230" />
-    <state width="724" height="230" key="GridCell.Tab.0.center" timestamp="1622580874230">
+    <state width="1493" height="88" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622596982663" />
+    <state width="1493" height="88" key="GridCell.Tab.0.center" timestamp="1622596982663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="230" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622580874230" />
-    <state width="724" height="230" key="GridCell.Tab.0.left" timestamp="1622580874230">
+    <state width="1493" height="88" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622596982663" />
+    <state width="1493" height="88" key="GridCell.Tab.0.left" timestamp="1622596982663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="230" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622580874230" />
-    <state width="724" height="230" key="GridCell.Tab.0.right" timestamp="1622580874230">
+    <state width="1493" height="88" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622596982663" />
+    <state width="1493" height="88" key="GridCell.Tab.0.right" timestamp="1622596982663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="230" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622580874230" />
+    <state width="1493" height="88" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622596982663" />
     <state x="279" y="58" key="SettingsEditor" timestamp="1622526386205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1622526386205" />
-    <state x="361" y="137" key="Vcs.Push.Dialog.v2" timestamp="1622593553514">
+    <state x="361" y="137" key="Vcs.Push.Dialog.v2" timestamp="1622594881159">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="137" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622593553514" />
+    <state x="361" y="137" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622594881159" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1622512734862">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

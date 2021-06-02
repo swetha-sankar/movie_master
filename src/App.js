@@ -30,20 +30,20 @@ function App() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, isLoading] = useState(false);
-    const [query, setQuery] = useState('hello');
+    const [query, setQuery] = useState('');
     const [visibleModal, activateModal] = useState(false);
     const [detail, setShowDetail] = useState(false);
     const [total, setTotal] = useState(0);
     const [detailRequest, setDetailRequest] = useState(false);
     const [page, setPage] = useState(1);
 
-
     useEffect(() => {
 
         isLoading(true);
         setError(null);
         setData(null);
-        setTotal(null);
+        setTotal(0);
+        setPage(1);
 
         fetch(`http://www.omdbapi.com/?s=${query}&page=${page}&type="movie"&apikey=${API_KEY}`)
 
@@ -69,12 +69,34 @@ function App() {
 
     }, [query]);
 
-    function onShowSizeChange(current, pageSize) {
-        if (current === 0) {
-            current = 1;
-        }
-        return current;
-    }
+
+    const pageSwitcher = (newPage) => {
+       // Switches the page and makes a new request to the API w/ the page number
+        <Pagination current = {newPage} />
+        fetch(`http://www.omdbapi.com/?s=${query}&page=${newPage}&type="movie"&apikey=${API_KEY}`)
+            .then(resp => resp)
+            .then(resp => resp.json())
+            .then(response => {
+                if (response.Response === 'False') {
+                    if (!(response.Error === "Incorrect IMDb ID.")) {
+                        // Unnecessary error message
+                        setError(response.Error);
+                        isLoading(false);
+                    }
+                } else {
+                    console.log(response.Search);
+                    setData(response.Search);
+                }
+                isLoading(false);
+            })
+            .catch(({message}) => {
+                setError(message);
+                isLoading(false);
+            })
+
+    };
+
+
 
 
     return (
@@ -99,19 +121,13 @@ function App() {
                 <SearchBox searchHandler={setQuery}/>
                 <br/>
                 <section className="content has-text-centered">
-
                     <Pagination
                         // https://github.com/ant-design/ant-design/tree/master/components/pagination/demo
-                        defaultCurrent={1}
-                        // Displays 10 results at a time
-                        defaultPageSize={10} //default size of page
-                        showSizeChanger={true}
-                        onShowSizeChange={onShowSizeChange}
-                        current = {page}
-                        onChange={setPage}
+                        defaultCurrent = {1}
+                        onChange={pageSwitcher}
+                        showSizeChanger={false}
                         total={total} //total number of card data available
                         showTotal={totalResults => `${totalResults} items total`}
-
                     />
                 </section>
                 <Row gutter={25} type="flex" justify="center">
