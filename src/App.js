@@ -45,7 +45,7 @@ function App() {
         setTotal(0);
         setPage(1);
 
-        fetch(`http://www.omdbapi.com/?s=${query}&page=${page}&type="movie"&apikey=${API_KEY}`)
+        fetch(`https://www.omdbapi.com/?s=${query}&page=${page}&type="movie"&apikey=${API_KEY}`)
 
             .then(resp => resp)
             .then(resp => resp.json())
@@ -73,7 +73,7 @@ function App() {
     const pageSwitcher = (newPage) => {
        // Switches the page and makes a new request to the API w/ the page number
         <Pagination current = {newPage} />
-        fetch(`http://www.omdbapi.com/?s=${query}&page=${newPage}&type="movie"&apikey=${API_KEY}`)
+        fetch(`https://www.omdbapi.com/?s=${query}&page=${newPage}&type="movie"&apikey=${API_KEY}`)
             .then(resp => resp)
             .then(resp => resp.json())
             .then(response => {

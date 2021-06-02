@@ -17,7 +17,7 @@ const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => 
         DetailRequest(true);
 
         // Use movie title to make API request
-        fetch(`http://www.omdbapi.com/?t=${Title}&apikey=${API_KEY}`)
+        fetch(`https://www.omdbapi.com/?t=${Title}&apikey=${API_KEY}`)
             .then(resp => resp)
             .then(resp => resp.json())
             .then(response => {
