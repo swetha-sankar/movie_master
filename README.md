@@ -13,5 +13,6 @@ https://swetha-sankar.github.io/movie_master/
 - Ant Design: https://github.com/ant-design/ant-design
 - Bulma: https://bulma.io/
 - OMDB API: https://www.omdbapi.com/
+- Clapboard Icon: Made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 
 
