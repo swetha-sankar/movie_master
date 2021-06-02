@@ -30,7 +30,7 @@ function App() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, isLoading] = useState(false);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('life');
     const [visibleModal, activateModal] = useState(false);
     const [detail, setShowDetail] = useState(false);
     const [total, setTotal] = useState(0);

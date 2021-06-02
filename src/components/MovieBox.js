@@ -7,7 +7,7 @@ import React from "react";
 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => {
+const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal, imdbID}) => {
     // https://github.com/ant-design/ant-design/blob/master/components/card/demo/meta.md
     const {Meta} = Card;
 
@@ -17,7 +17,8 @@ const MovieBox = ({Title, Poster, ShowDetail, DetailRequest, ActivateModal}) => 
         DetailRequest(true);
 
         // Use movie title to make API request
-        fetch(`https://www.omdbapi.com/?t=${Title}&apikey=${API_KEY}`)
+
+        fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${API_KEY}`)
             .then(resp => resp)
             .then(resp => resp.json())
             .then(response => {

@@ -1,12 +1,5 @@
 # Movie Searcher
-
-## Deliverables
-- Has search function specifically for movie titles that results in an intuitive, responsive, mobile friendly interface
-- Brings up additional details about selected title
-- Pagination
-
-## Technologies Used
-Bulma, Ant Design, CSS, PyCharm IDE, ReactJS, HTML, GitHub Pages, OMDB API, GitHub, Git
+https://swetha-sankar.github.io/movie_master/
 
 ## Acknowledgements
 - Bootstrapped with Create React App
@@ -16,5 +9,7 @@ Bulma, Ant Design, CSS, PyCharm IDE, ReactJS, HTML, GitHub Pages, OMDB API, GitH
 
 *Captures* 
 ![Demo](/public/demo.PNG)
+
+
 ![Detail Box](/public/demo2.PNG)
 
